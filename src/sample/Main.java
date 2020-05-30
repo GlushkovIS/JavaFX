@@ -13,6 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("views/AuthWindow.fxml"));
         primaryStage.setTitle("Loose Weight 1.1");
         primaryStage.setScene(new Scene(root, 700, 400));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
