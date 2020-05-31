@@ -1,19 +1,14 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import sample.handler.DatabaseHandler;
 import sample.handler.User;
 import sample.handler.Window;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -53,7 +48,7 @@ public class SingUpController {
     @FXML
     private CheckBox noCheckBox;
 
-    private Window window = new Window();
+    private final Window window = new Window();
 
     @FXML
     void initialize() {

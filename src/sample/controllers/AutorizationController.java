@@ -1,19 +1,14 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import sample.animations.Shake;
 import sample.handler.DatabaseHandler;
 import sample.handler.User;
 import sample.handler.Window;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,7 +35,7 @@ public class AutorizationController {
     private Button singUpButton;
 
     //хэлпер перехода по окнам
-    private Window window = new Window();
+    private final Window window = new Window();
 
     @FXML
     void initialize() {
@@ -48,7 +43,7 @@ public class AutorizationController {
             String loginText = loginField.getText().trim();
             String passwordText = passwordField.getText().trim();
 
-            if(!loginText.equals("") && !passwordText.equals("")) {
+            if (!loginText.equals("") && !passwordText.equals("")) {
                 try {
                     loginUser(loginText, passwordText);
                 } catch (SQLException | ClassNotFoundException throwables) {
@@ -83,7 +78,7 @@ public class AutorizationController {
             counter++;
         }
 
-        if(counter == 1){
+        if (counter == 1) {
             singUpButton.getScene().getWindow().hide();
             window.goToScene("MainWindow.fxml");
         } else {
@@ -93,7 +88,6 @@ public class AutorizationController {
             userPasswordWrongAnim.PlayAnim();
         }
     }
-
 
 
 }
