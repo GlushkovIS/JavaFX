@@ -1,12 +1,16 @@
 package sample.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import sample.handler.DatabaseHandler;
+import sample.handler.User;
+
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class SingUpController {
 
@@ -41,8 +45,40 @@ public class SingUpController {
     private TextField singUpCountry;
 
     @FXML
+    private CheckBox noCheckBox;
+
+    @FXML
     void initialize() {
+        singUpFinishButton.setOnAction(actionEvent -> {
+            singUpNewUser();
+        });
 
+    }
 
+    private void singUpNewUser() {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+
+        String name = singUpName.getText();
+        String surname = singUpSurname.getText();
+        String login = singUpLoginField.getText();
+        String password = singUpPasswordField.getText();
+        String country = singUpCountry.getText();
+        String sex = "";
+
+        if (manCheckBox.isSelected()) {
+            sex = "Мужчина";
+        } else if (womenCheckBox.isSelected()) {
+            sex = "Женщина";
+        } else {
+            sex = "Не указано";
+        }
+
+        User user = new User(name, surname, sex, country, login, password);
+
+        try {
+            databaseHandler.signUpUser(user);
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

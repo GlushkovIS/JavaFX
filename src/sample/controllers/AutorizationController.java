@@ -36,7 +36,15 @@ public class AutorizationController {
     @FXML
     void initialize() {
         authButton.setOnAction(actionEvent -> {
-            System.out.println("Нахер нажал!");
+            String loginText = loginField.getText().trim();
+            String passwordText = passwordField.getText().trim();
+
+            if(!loginText.equals("") && !passwordText.equals("")) {
+                loginUser(loginText, passwordText);
+            } else {
+                System.out.println("Login and password is empty");
+            }
+
         });
 
         // переход на окно регистрации
@@ -57,5 +65,10 @@ public class AutorizationController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
         });
+    }
+
+    private void loginUser(String login, String password)
+    {
+
     }
 }

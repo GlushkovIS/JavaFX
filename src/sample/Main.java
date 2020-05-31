@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.handler.DatabaseHandler;
+
+import java.sql.Connection;
 
 public class Main extends Application {
 
@@ -15,6 +18,9 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.setResizable(false);
         primaryStage.show();
+
+        DatabaseHandler db = new DatabaseHandler();
+
     }
 
 
