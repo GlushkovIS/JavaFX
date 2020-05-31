@@ -8,9 +8,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.animations.Shake;
+import sample.handler.DatabaseHandler;
+import sample.handler.User;
+import sample.handler.Window;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AutorizationController {
@@ -33,6 +39,9 @@ public class AutorizationController {
     @FXML
     private Button singUpButton;
 
+    //хэлпер перехода по окнам
+    private Window window = new Window();
+
     @FXML
     void initialize() {
         authButton.setOnAction(actionEvent -> {
@@ -40,7 +49,11 @@ public class AutorizationController {
             String passwordText = passwordField.getText().trim();
 
             if(!loginText.equals("") && !passwordText.equals("")) {
-                loginUser(loginText, passwordText);
+                try {
+                    loginUser(loginText, passwordText);
+                } catch (SQLException | ClassNotFoundException throwables) {
+                    throwables.printStackTrace();
+                }
             } else {
                 System.out.println("Login and password is empty");
             }
@@ -50,25 +63,37 @@ public class AutorizationController {
         // переход на окно регистрации
         singUpButton.setOnAction(actionEvent -> {
             singUpButton.getScene().getWindow().hide();
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/views/SingUpWindow.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+            window.goToScene("SingUpWindow.fxml");
         });
     }
 
-    private void loginUser(String login, String password)
-    {
+    /**
+     * Авторизует пользователя
+     */
+    private void loginUser(String login, String password) throws SQLException, ClassNotFoundException {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        User user = new User();
+        user.setLogin(login);
+        user.setPassword(password);
 
+        ResultSet resultSet = databaseHandler.getUser(user);
+
+        int counter = 0;
+        while (resultSet.next()) {
+            counter++;
+        }
+
+        if(counter == 1){
+            singUpButton.getScene().getWindow().hide();
+            window.goToScene("MainWindow.fxml");
+        } else {
+            Shake userLoginWrongAnim = new Shake(loginField);
+            Shake userPasswordWrongAnim = new Shake(passwordField);
+            userLoginWrongAnim.PlayAnim();
+            userPasswordWrongAnim.PlayAnim();
+        }
     }
+
+
+
 }

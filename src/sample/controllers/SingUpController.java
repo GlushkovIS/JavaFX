@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.handler.DatabaseHandler;
 import sample.handler.User;
+import sample.handler.Window;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,11 +53,15 @@ public class SingUpController {
     @FXML
     private CheckBox noCheckBox;
 
+    private Window window = new Window();
+
     @FXML
     void initialize() {
         singUpFinishButton.setOnAction(actionEvent -> {
             singUpNewUser();
-            goToMainWindow();
+
+            singUpFinishButton.getScene().getWindow().hide();
+            window.goToScene("MainWindow.fxml");
         });
 
     }
@@ -91,23 +96,4 @@ public class SingUpController {
         }
     }
 
-    /**
-     * Перейти к основному окну программы
-     */
-    private void goToMainWindow() {
-        singUpFinishButton.getScene().getWindow().hide();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/sample/views/MainWindow.fxml"));
-
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
-    }
 }

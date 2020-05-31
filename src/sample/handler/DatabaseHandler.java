@@ -6,9 +6,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+
 
 public class DatabaseHandler extends Config {
 
+    /**
+     * Получаем объект подключения к БД
+     * @return Connection
+     */
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
         Connection connection = null;
         try {
@@ -23,6 +29,9 @@ public class DatabaseHandler extends Config {
         return null;
     }
 
+    /**
+     * Инсерт на данных клиента в БД
+     */
     public void signUpUser(User user) throws SQLException, ClassNotFoundException {
         String insert = "INSERT INTO " + Const.USER_TABLE + "(" + Const.NAME_USER + "," +
                 Const.SURNAME_USER + "," + Const.SEX_USER + "," + Const.COUNTRY_USER + "," +
@@ -37,5 +46,21 @@ public class DatabaseHandler extends Config {
         preparedStatement.setString(6, user.getPassword());
 
         preparedStatement.executeUpdate();
+    }
+
+    /**
+     * Получает пользователе из БД по логину / паролю
+     */
+    public ResultSet getUser(User user) throws SQLException, ClassNotFoundException {
+
+        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.LOGIN_USER
+                + " = ? AND " + Const.PASSWORD_USER + " = ?";
+
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+        preparedStatement.setString(1, user.getLogin());
+        preparedStatement.setString(2, user.getPassword());
+
+        return preparedStatement.executeQuery();
+
     }
 }
