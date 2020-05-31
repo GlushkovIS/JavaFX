@@ -71,7 +71,7 @@
                   <Image url="@../assets/country.png" />
                </image>
             </ImageView>
-            <CheckBox fx:id="womenCheckBox1" layoutX="415.0" layoutY="136.0" mnemonicParsing="false" text="Не важно" />
+            <CheckBox fx:id="noCheckBox" layoutX="415.0" layoutY="136.0" mnemonicParsing="false" text="Не важно" />
             </children>
         </AnchorPane>
         <Label layoutX="228.0" layoutY="43.0" text="Loose weight 1.1" textFill="WHITE">

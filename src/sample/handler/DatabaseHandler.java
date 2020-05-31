@@ -24,9 +24,9 @@ public class DatabaseHandler extends Config {
     }
 
     public void signUpUser(User user) throws SQLException, ClassNotFoundException {
-        String insert = "INSERT INTO " + Const.USER_TABLE + "(" + Const.NAME + "," +
-                Const.SURNAME + "," + Const.SEX + "," + Const.COUNTRY + "," +
-                Const.LOGIN + "," + Const.PASSWORD + ")" + "VALUES(?,?,?,?,?,?)";
+        String insert = "INSERT INTO " + Const.USER_TABLE + "(" + Const.NAME_USER + "," +
+                Const.SURNAME_USER + "," + Const.SEX_USER + "," + Const.COUNTRY_USER + "," +
+                Const.LOGIN_USER + "," + Const.PASSWORD_USER + ")" + "VALUES(?,?,?,?,?,?)";
 
         PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
         preparedStatement.setString(1, user.getName());
