@@ -20,6 +20,8 @@ public class Const {
     public static final String ID_WEIGHT = "id";
     public static final String WEIGHT_WEIGHT = "weight";
     public static final String DATE_WEIGHT = "date";
+    public static final String LOGIN_WEIGHT = "login";
+
 
 
 }

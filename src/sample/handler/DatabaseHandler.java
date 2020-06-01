@@ -7,6 +7,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class DatabaseHandler extends Config {
@@ -62,5 +65,24 @@ public class DatabaseHandler extends Config {
 
     }
 
+    /**
+     * Записывает вес в БД
+     */
+    public void insertWeight(String login, String weight) throws SQLException, ClassNotFoundException {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+        String dateFormat = simpleDateFormat.format(date);
 
+
+
+        String insert = "INSERT INTO " + Const.WEIGHT_TABLE + "(" + Const.DATE_WEIGHT + "," +
+                Const.WEIGHT_WEIGHT + "," + Const.LOGIN_WEIGHT + ")" + "VALUES(?,?,?)";
+
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+        preparedStatement.setString(1, dateFormat);
+        preparedStatement.setString(2, weight);
+        preparedStatement.setString(3, login);
+
+        preparedStatement.executeUpdate();
+    }
 }
