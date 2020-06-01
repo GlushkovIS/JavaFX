@@ -31,7 +31,7 @@
                   <Image url="@../assets/weight.png" />
                </image>
             </ImageView>
-            <LineChart layoutX="37.0" layoutY="22.0" prefHeight="588.0" prefWidth="1058.0">
+            <LineChart layoutX="37.0" layoutY="22.0" prefHeight="652.0" prefWidth="1058.0">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -39,12 +39,17 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </LineChart>
-            <Button fx:id="chengeDataButton" layoutX="1169.0" layoutY="534.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #876294;" text="Изменить данные" textFill="WHITE">
+            <Button fx:id="chengeDataButton" layoutX="1166.0" layoutY="215.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #876294;" text="Изменить данные" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="settingButton" layoutX="1171.0" layoutY="594.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #876294;" text="Настройки" textFill="WHITE">
+            <Button fx:id="settingButton" layoutX="1165.0" layoutY="274.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #876294;" text="Настройки" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="backButton" layoutX="1168.0" layoutY="612.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #876294;" text="Выйти" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="15.0" />
                </font>

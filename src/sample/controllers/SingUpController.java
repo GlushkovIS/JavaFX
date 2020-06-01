@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.animations.Shake;
 import sample.handler.DatabaseHandler;
 import sample.handler.InputData;
@@ -41,16 +42,23 @@ public class SingUpController {
     private TextField singUpCountry;
     @FXML
     private CheckBox noCheckBox;
+    @FXML
+    private Button singInButton;
 
     @FXML
     void initialize() {
         singUpFinishButton.setOnAction(actionEvent -> {
             if (singUpNewUser()) {
-                singUpFinishButton.getScene().getWindow().hide();
+                Stage currentStage = (Stage)singUpFinishButton.getScene().getWindow();
+                currentStage.close();
                 window.goToScene("MainWindow.fxml");
             }
         });
-
+        singInButton.setOnAction(actionEvent -> {
+            Stage currentStage = (Stage)singInButton.getScene().getWindow();
+            currentStage.close();
+            window.goToScene("AuthWindow.fxml");
+        });
     }
 
     /**

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import sample.animations.Shake;
 import sample.handler.DatabaseHandler;
 import sample.handler.User;
@@ -47,14 +48,18 @@ public class AutorizationController {
                     throwables.printStackTrace();
                 }
             } else {
-                System.out.println("Login and password is empty");
+                Shake userLoginWrongAnim = new Shake(loginField);
+                Shake userPasswordWrongAnim = new Shake(passwordField);
+                userLoginWrongAnim.PlayAnim();
+                userPasswordWrongAnim.PlayAnim();
             }
 
         });
-
-        // переход на окно регистрации
         singUpButton.setOnAction(actionEvent -> {
-            singUpButton.getScene().getWindow().hide();
+            // закрыть текущее окно
+            Stage currentStage = (Stage) singUpButton.getScene().getWindow();
+            currentStage.close();
+            // открыть новое окно
             window.goToScene("SingUpWindow.fxml");
         });
     }
@@ -78,13 +83,11 @@ public class AutorizationController {
         }
 
         if (counter == 1) {
-            singUpButton.getScene().getWindow().hide();
+            // закрыть текущее окно
+            Stage currentStage = (Stage) singUpButton.getScene().getWindow();
+            currentStage.close();
+            // открыть новое окно
             window.goToScene("MainWindow.fxml");
-        } else {
-            Shake userLoginWrongAnim = new Shake(loginField);
-            Shake userPasswordWrongAnim = new Shake(passwordField);
-            userLoginWrongAnim.PlayAnim();
-            userPasswordWrongAnim.PlayAnim();
         }
     }
 
