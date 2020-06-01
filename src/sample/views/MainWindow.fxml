@@ -31,7 +31,7 @@
                   <Image url="@../assets/weight.png" />
                </image>
             </ImageView>
-            <LineChart layoutX="37.0" layoutY="22.0" prefHeight="652.0" prefWidth="1058.0">
+            <LineChart fx:id="lineChart" layoutX="37.0" layoutY="22.0" prefHeight="652.0" prefWidth="1058.0">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>

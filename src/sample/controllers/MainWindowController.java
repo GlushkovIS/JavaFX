@@ -1,9 +1,7 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -13,7 +11,6 @@ import sample.handler.DatabaseHandler;
 import sample.handler.InputData;
 import sample.handler.Window;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -47,6 +44,9 @@ public class MainWindowController {
     private Text helloUser;
 
     @FXML
+    private LineChart<?, ?> lineChart;
+
+    @FXML
     void initialize() {
         helloUser.setText("Привет, " + getUserName());
         backButton.setOnAction(actionEvent -> {
@@ -67,6 +67,7 @@ public class MainWindowController {
 
     /**
      * Получает имя пользователя из класса авторизации или регистрации
+     *
      * @return user.name
      */
     private String getUserName() {
@@ -78,6 +79,7 @@ public class MainWindowController {
 
     /**
      * Полугчает логин пользователя из класса авторизации или регистрации
+     *
      * @return user.login
      */
     private String getUserLogin() {
@@ -95,7 +97,7 @@ public class MainWindowController {
         InputData checkInput = new InputData();
         String weight = weightInput.getText();
 
-        if(checkInput.isFloat(weight)){
+        if (checkInput.isFloat(weight)) {
             databaseHandler.insertWeight(getUserLogin(), weight);
         } else {
             Shake weightAnim = new Shake(weightInput);
