@@ -33,5 +33,14 @@ public class MainWindowController {
 
     @FXML
     void initialize() {
+        //Приветсвие в главном окне приложения
+        helloUser.setText("Привет, " + getUserName());
+    }
+
+    private String getUserName() {
+        if (AutorizationController.user.getName() == null) {
+            return SingUpController.user.getName();
+        }
+        return AutorizationController.user.getName();
     }
 }

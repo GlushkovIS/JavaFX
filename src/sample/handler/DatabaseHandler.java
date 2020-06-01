@@ -19,8 +19,6 @@ public class DatabaseHandler extends Config {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(this.DATABASE_ADDRESS);
-
-            System.out.println("Connection to SQLite has been established.");
             return connection;
 
         } catch (SQLException e) {
@@ -30,7 +28,7 @@ public class DatabaseHandler extends Config {
     }
 
     /**
-     * Инсерт на данных клиента в БД
+     * Инсерт данных клиента в БД
      */
     public void signUpUser(User user) throws SQLException, ClassNotFoundException {
         String insert = "INSERT INTO " + Const.USER_TABLE + "(" + Const.NAME_USER + "," +
@@ -63,4 +61,6 @@ public class DatabaseHandler extends Config {
         return preparedStatement.executeQuery();
 
     }
+
+
 }

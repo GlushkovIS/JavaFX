@@ -16,26 +16,23 @@ import java.util.ResourceBundle;
 
 public class AutorizationController {
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private TextField loginField;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private Button authButton;
-
-    @FXML
-    private Button singUpButton;
-
+    //хранить объект клиента
+    public static User user = new User();
     //хэлпер перехода по окнам
     private final Window window = new Window();
+
+    @FXML
+    private ResourceBundle resources;
+    @FXML
+    private URL location;
+    @FXML
+    private TextField loginField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Button authButton;
+    @FXML
+    private Button singUpButton;
 
     @FXML
     void initialize() {
@@ -63,15 +60,17 @@ public class AutorizationController {
     }
 
     /**
-     * Авторизует пользователя
+     * Авторизует пользователя, в случае пустых полей воспроизводит анимацию
      */
     private void loginUser(String login, String password) throws SQLException, ClassNotFoundException {
         DatabaseHandler databaseHandler = new DatabaseHandler();
-        User user = new User();
         user.setLogin(login);
         user.setPassword(password);
 
         ResultSet resultSet = databaseHandler.getUser(user);
+
+        // записывает имя клиента в объект (для привествия в основном окне)
+        user.setName(resultSet.getString("name"));
 
         int counter = 0;
         while (resultSet.next()) {

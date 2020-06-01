@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Window {
+
+    /**
+     * Переходит на другое окно программы по наименованию вида fxml
+     */
     public void goToScene(String window) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/sample/views/" + window));
@@ -23,4 +27,6 @@ public class Window {
         stage.setScene(new Scene(root));
         stage.showAndWait();
     }
+
+
 }
