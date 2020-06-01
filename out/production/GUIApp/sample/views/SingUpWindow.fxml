@@ -79,5 +79,10 @@
                 <Font name="Helvetica" size="34.0" />
             </font>
         </Label>
+      <Button fx:id="singInButton" layoutX="598.0" layoutY="14.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="82.0" style="-fx-background-color: #876294;" text="Войти" textFill="WHITE">
+         <font>
+            <Font name="Helvetica" size="15.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
