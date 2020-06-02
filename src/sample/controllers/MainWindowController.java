@@ -1,13 +1,17 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.animations.Shake;
 import sample.handler.DatabaseHandler;
+import sample.handler.Graph;
 import sample.handler.InputData;
 import sample.handler.Window;
 
@@ -18,6 +22,7 @@ import java.util.ResourceBundle;
 public class MainWindowController {
 
     Window window = new Window();
+    Graph graph = new Graph();
 
     @FXML
     private ResourceBundle resources;
@@ -44,7 +49,13 @@ public class MainWindowController {
     private Text helloUser;
 
     @FXML
-    private LineChart<?, ?> lineChart;
+    private LineChart<?, ?> chart;
+
+    @FXML
+    private CategoryAxis x;
+
+    @FXML
+    private NumberAxis y;
 
     @FXML
     void initialize() {
@@ -63,6 +74,9 @@ public class MainWindowController {
                 throwables.printStackTrace();
             }
         });
+
+        graph.buildWeightGraph(chart, 10);
+
     }
 
     /**

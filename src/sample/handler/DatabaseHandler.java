@@ -85,4 +85,12 @@ public class DatabaseHandler extends Config {
 
         preparedStatement.executeUpdate();
     }
+
+    /**
+     * Получает вес в БД
+     */
+    public void getUserWeight(String login, int numberOfWrite) throws SQLException, ClassNotFoundException {
+
+        String select = "SELECT * FROM " + Const.WEIGHT_TABLE + " WHERE " + Const.LOGIN_WEIGHT + " = ? AND ";
+    }
 }
