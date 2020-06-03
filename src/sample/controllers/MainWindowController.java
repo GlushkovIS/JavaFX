@@ -58,7 +58,7 @@ public class MainWindowController {
     private NumberAxis y;
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException, ClassNotFoundException {
         helloUser.setText("Привет, " + getUserName());
         backButton.setOnAction(actionEvent -> {
             // закрыть текущее окно
@@ -73,9 +73,15 @@ public class MainWindowController {
             } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
+
+            try {
+                graph.buildWeightGraph(chart, 100, getUserLogin());
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
         });
 
-        graph.buildWeightGraph(chart, 10);
+        graph.buildWeightGraph(chart, 100, getUserLogin());
 
     }
 
