@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class Graph {
 
-    private final XYChart.Series series = new XYChart.Series<>();
+    private XYChart.Series series = new XYChart.Series<>();
 
     /**
      * Построить график изменения веса

@@ -32,6 +32,7 @@ public class DateHandler {
 
     public String getNowFullDate() {
         Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, 1);
         return simpleDateFormat.format(calendar.getTimeInMillis());
     }
 
