@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -75,13 +74,13 @@ public class MainWindowController {
             }
 
             try {
-                graph.buildWeightGraph(chart, 100, getUserLogin());
+                graph.buildWeightGraph(chart, "allTime", getUserLogin());
             } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
         });
 
-        graph.buildWeightGraph(chart, 100, getUserLogin());
+        graph.buildWeightGraph(chart, "allTime", getUserLogin());
 
     }
 

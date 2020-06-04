@@ -2,13 +2,8 @@ package sample.handler;
 
 import sample.config.Config;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 
@@ -16,6 +11,7 @@ public class DatabaseHandler extends Config {
 
     /**
      * Получаем объект подключения к БД
+     *
      * @return Connection
      */
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
@@ -74,7 +70,6 @@ public class DatabaseHandler extends Config {
         String dateFormat = simpleDateFormat.format(date);
 
 
-
         String insert = "INSERT INTO " + Const.WEIGHT_TABLE + "(" + Const.DATE_WEIGHT + "," +
                 Const.WEIGHT_WEIGHT + "," + Const.LOGIN_WEIGHT + ")" + "VALUES(?,?,?)";
 
@@ -89,13 +84,33 @@ public class DatabaseHandler extends Config {
     /**
      * Получает вес в БД
      */
-    public ResultSet getUserWeight(String login, int numberOfWrite) throws SQLException, ClassNotFoundException {
+    public ResultSet getUserWeightForPeriod(String login, String timeFrame) throws SQLException, ClassNotFoundException {
 
-        String select = "SELECT * FROM (SELECT * FROM " + Const.WEIGHT_TABLE + " WHERE " + Const.LOGIN_WEIGHT + " = ? " + "ORDER BY" + " id " + "DESC LIMIT " + numberOfWrite + ") " + "sub " +
-                "ORDER BY id";
+        String select = "SELECT * FROM (SELECT * FROM " + Const.WEIGHT_TABLE + " WHERE " + Const.LOGIN_WEIGHT + " = ? AND " + Const.DATE_WEIGHT + " between ?" + " AND ?" + " ORDER BY" + " id " + ") sub " +
+                " ORDER BY id";
+
+        DateHandler dateHandler = new DateHandler();
         PreparedStatement preparedStatement = getDbConnection().prepareStatement(select);
+
+        switch (timeFrame) {
+            case "threeDayAgo":
+                preparedStatement.setString(2, dateHandler.getThreeDayAgo());
+            case "weekAgo":
+                preparedStatement.setString(2, dateHandler.getWeekAgo());
+            case "monthAgo":
+                preparedStatement.setString(2, dateHandler.getMonthAgo());
+            case "threeMonthAgo":
+                preparedStatement.setString(2, dateHandler.getThreeMonthAgo());
+            case "yearAgo":
+                preparedStatement.setString(2, dateHandler.getYearAgo());
+            case "allTime":
+                preparedStatement.setString(2, dateHandler.getUnixDate());
+        }
+
         preparedStatement.setString(1, login);
+        preparedStatement.setString(3, dateHandler.getNowFullDate());
 
         return preparedStatement.executeQuery();
     }
+
 }
