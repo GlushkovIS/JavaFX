@@ -187,11 +187,11 @@ public class MainWindowController {
      */
     private void writeWeight() throws SQLException, ClassNotFoundException {
         DatabaseHandler databaseHandler = new DatabaseHandler();
-        InputData checkInput = new InputData();
+        InputData inputData = new InputData();
         String weight = weightInput.getText();
 
-        if (checkInput.isFloat(weight)) {
-            databaseHandler.insertWeight(getUserLogin(), weight);
+        if (inputData.isNumeric(weight)) {
+            databaseHandler.insertWeight(getUserLogin(), inputData.stringWeightProcessing(weight));
         } else {
             Shake weightAnim = new Shake(weightInput);
             weightAnim.PlayAnim();

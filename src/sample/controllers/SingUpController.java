@@ -122,13 +122,13 @@ public class SingUpController {
         }
 
         int error = 0;
-        if (!inputCheck.isText(inputName)) {
+        if (inputCheck.isText(inputName)) {
             error++;
         }
-        if (!inputCheck.isText(inputSurname)) {
+        if (inputCheck.isText(inputSurname)) {
             error++;
         }
-        if (!inputCheck.isText(inputCountry)) {
+        if (inputCheck.isText(inputCountry)) {
             error++;
         }
         if (inputPassword.isEmpty()) {

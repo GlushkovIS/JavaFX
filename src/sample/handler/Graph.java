@@ -23,7 +23,7 @@ public class Graph {
             double weight = Double.parseDouble(resultSet.getString(Const.WEIGHT_WEIGHT));
             series.getData().add(new XYChart.Data<>(resultSet.getString(Const.DATE_WEIGHT), weight));
         }
-        resultSet.close();
+//        resultSet.close();
         styleOfChart(chart);
 
         chart.getData().add(series);
