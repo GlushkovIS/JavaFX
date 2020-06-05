@@ -5,7 +5,9 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.animations.Shake;
@@ -57,8 +59,34 @@ public class MainWindowController {
     private NumberAxis y;
 
     @FXML
+    private RadioButton threeDayAgoBtn;
+
+    @FXML
+    private RadioButton weekAgoBtn;
+
+    @FXML
+    private RadioButton monthAgoBtn;
+
+    @FXML
+    private RadioButton threeMonthAgoBtn;
+
+    @FXML
+    private RadioButton sixMonthAgoBtn;
+
+    @FXML
+    private RadioButton yearAgoBtn;
+
+    @FXML
+    private RadioButton allTimeAgoBtn;
+
+    protected String period = "weekAgo";
+
+
+    @FXML
     void initialize() throws SQLException, ClassNotFoundException {
+
         helloUser.setText("Привет, " + getUserName());
+
         backButton.setOnAction(actionEvent -> {
             // закрыть текущее окно
             Stage currentStage = (Stage) backButton.getScene().getWindow();
@@ -74,13 +102,82 @@ public class MainWindowController {
             }
 
             try {
-                graph.buildWeightGraph(chart, "allTime", getUserLogin());
+                graph.buildWeightGraph(chart, this.period, getUserLogin());
             } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
         });
 
-        graph.buildWeightGraph(chart, "allTime", getUserLogin());
+        graph.buildWeightGraph(chart, this.period, getUserLogin());
+
+        // Группа RadioBtn для изменения периода постраения графика
+        ToggleGroup group = new ToggleGroup();
+
+        threeDayAgoBtn.setToggleGroup(group);
+        weekAgoBtn.setToggleGroup(group);
+        monthAgoBtn.setToggleGroup(group);
+        threeMonthAgoBtn.setToggleGroup(group);
+        sixMonthAgoBtn.setToggleGroup(group);
+        yearAgoBtn.setToggleGroup(group);
+        allTimeAgoBtn.setToggleGroup(group);
+        weekAgoBtn.setSelected(true);
+
+        allTimeAgoBtn.setOnAction(actionEvent -> {
+            this.period = "allTime";
+            try {
+                graph.buildWeightGraph(chart, this.period, getUserLogin());
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        yearAgoBtn.setOnAction(actionEvent -> {
+            this.period = "yearAgo";
+            try {
+                graph.buildWeightGraph(chart, this.period, getUserLogin());
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        sixMonthAgoBtn.setOnAction(actionEvent -> {
+            this.period = "sixMonthAgo";
+            try {
+                graph.buildWeightGraph(chart, this.period, getUserLogin());
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        threeMonthAgoBtn.setOnAction(actionEvent -> {
+            this.period = "threeMonthAgo";
+            try {
+                graph.buildWeightGraph(chart, this.period, getUserLogin());
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        monthAgoBtn.setOnAction(actionEvent -> {
+            this.period = "monthAgo";
+            try {
+                graph.buildWeightGraph(chart, this.period, getUserLogin());
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        weekAgoBtn.setOnAction(actionEvent -> {
+            this.period = "weekAgo";
+            try {
+                graph.buildWeightGraph(chart, this.period, getUserLogin());
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        threeDayAgoBtn.setOnAction(actionEvent -> {
+            this.period = "threeDayAgo";
+            try {
+                graph.buildWeightGraph(chart, this.period, getUserLogin());
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        });
 
     }
 
@@ -97,7 +194,7 @@ public class MainWindowController {
     }
 
     /**
-     * Полугчает логин пользователя из класса авторизации или регистрации
+     * Получает логин пользователя из класса авторизации или регистрации
      *
      * @return user.login
      */
@@ -124,4 +221,5 @@ public class MainWindowController {
         }
 
     }
+
 }

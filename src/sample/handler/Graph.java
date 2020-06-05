@@ -8,22 +8,30 @@ import java.sql.SQLException;
 
 public class Graph {
 
-    private XYChart.Series series = new XYChart.Series<>();
+    private final DatabaseHandler db = new DatabaseHandler();
 
     /**
      * Построить график изменения веса
      */
     public void buildWeightGraph(LineChart<?, ?> chart, String period, String login) throws SQLException, ClassNotFoundException {
-        series.setName("Изменение веса за " + period);
-        DatabaseHandler db = new DatabaseHandler();
+        chart.getData().clear();
+        XYChart.Series series = new XYChart.Series<String, Double>();
+
         ResultSet resultSet = db.getUserWeightForPeriod(login, period);
 
         while (resultSet.next()) {
             double weight = Double.parseDouble(resultSet.getString(Const.WEIGHT_WEIGHT));
             series.getData().add(new XYChart.Data<>(resultSet.getString(Const.DATE_WEIGHT), weight));
         }
+        resultSet.close();
+        styleOfChart(chart);
 
         chart.getData().addAll(series);
+    }
+
+    private void styleOfChart(LineChart<?, ?> chart){
+        chart.setCreateSymbols(false);
+        chart.setLegendVisible(false);
     }
 
 }

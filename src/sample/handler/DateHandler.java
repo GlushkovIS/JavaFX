@@ -8,7 +8,7 @@ public class DateHandler {
     private final int DATE;
     private final int MONTH;
     private final int YEAR;
-    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.y");
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("y-MM-dd");
 
 
     public DateHandler() {
@@ -74,6 +74,6 @@ public class DateHandler {
     }
 
     public String getUnixDate() {
-        return "01.01.1970";
+        return "1970-01-01";
     }
 }

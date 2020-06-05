@@ -66,7 +66,7 @@ public class DatabaseHandler extends Config {
      */
     public void insertWeight(String login, String weight) throws SQLException, ClassNotFoundException {
         Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("y-MM-dd");
         String dateFormat = simpleDateFormat.format(date);
 
 
@@ -95,16 +95,25 @@ public class DatabaseHandler extends Config {
         switch (timeFrame) {
             case "threeDayAgo":
                 preparedStatement.setString(2, dateHandler.getThreeDayAgo());
+                break;
             case "weekAgo":
                 preparedStatement.setString(2, dateHandler.getWeekAgo());
+                break;
             case "monthAgo":
                 preparedStatement.setString(2, dateHandler.getMonthAgo());
+                break;
             case "threeMonthAgo":
                 preparedStatement.setString(2, dateHandler.getThreeMonthAgo());
+                break;
+            case "sixMonthAgo":
+                preparedStatement.setString(2, dateHandler.getSixMountAgo());
+                break;
             case "yearAgo":
                 preparedStatement.setString(2, dateHandler.getYearAgo());
+                break;
             case "allTime":
                 preparedStatement.setString(2, dateHandler.getUnixDate());
+                break;
         }
 
         preparedStatement.setString(1, login);
