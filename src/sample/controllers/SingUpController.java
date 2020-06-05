@@ -1,10 +1,7 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import sample.animations.Shake;
 import sample.handler.DatabaseHandler;
@@ -35,30 +32,38 @@ public class SingUpController {
     @FXML
     private TextField singUpName;
     @FXML
-    private CheckBox manCheckBox;
-    @FXML
-    private CheckBox womenCheckBox;
-    @FXML
     private TextField singUpCountry;
     @FXML
-    private CheckBox noCheckBox;
-    @FXML
     private Button singInButton;
+    @FXML
+    private RadioButton manCheckBox;
+    @FXML
+    private RadioButton womenCheckBox;
+    @FXML
+    private RadioButton noCheckBox;
 
     @FXML
     void initialize() {
         singUpFinishButton.setOnAction(actionEvent -> {
             if (singUpNewUser()) {
-                Stage currentStage = (Stage)singUpFinishButton.getScene().getWindow();
+                Stage currentStage = (Stage) singUpFinishButton.getScene().getWindow();
                 currentStage.close();
                 window.goToScene("MainWindow.fxml");
             }
         });
         singInButton.setOnAction(actionEvent -> {
-            Stage currentStage = (Stage)singInButton.getScene().getWindow();
+            Stage currentStage = (Stage) singInButton.getScene().getWindow();
             currentStage.close();
             window.goToScene("AuthWindow.fxml");
         });
+
+        ToggleGroup group = new ToggleGroup();
+        manCheckBox.setToggleGroup(group);
+        manCheckBox.setSelected(true);
+        womenCheckBox.setToggleGroup(group);
+        noCheckBox.setToggleGroup(group);
+
+
     }
 
     /**

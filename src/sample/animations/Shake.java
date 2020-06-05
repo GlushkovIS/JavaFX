@@ -13,6 +13,7 @@ public class Shake {
         translateTransition.setByX(10f);
         translateTransition.setCycleCount(3);
         translateTransition.setAutoReverse(true);
+        node.setStyle("-fx-border-color: red; -fx-border-radius: 5px;");
     }
 
     public void PlayAnim()
