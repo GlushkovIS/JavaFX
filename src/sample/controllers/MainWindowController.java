@@ -1,8 +1,8 @@
 package sample.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -22,65 +22,42 @@ import java.util.ResourceBundle;
 
 public class MainWindowController {
 
+    protected String period = "weekAgo";
     Window window = new Window();
     Graph graph = new Graph();
 
     @FXML
     private ResourceBundle resources;
-
     @FXML
     private URL location;
-
     @FXML
     private TextField weightInput;
-
     @FXML
     private Button sendWeigthButton;
-
-    @FXML
-    private Button chengeDataButton;
-
-    @FXML
-    private Button settingButton;
-
     @FXML
     private Button backButton;
-
     @FXML
     private Text helloUser;
-
     @FXML
-    private LineChart<?, ?> chart;
-
+    private AreaChart<?, ?> chart;
     @FXML
     private CategoryAxis x;
-
     @FXML
     private NumberAxis y;
-
     @FXML
     private RadioButton threeDayAgoBtn;
-
     @FXML
     private RadioButton weekAgoBtn;
-
     @FXML
     private RadioButton monthAgoBtn;
-
     @FXML
     private RadioButton threeMonthAgoBtn;
-
     @FXML
     private RadioButton sixMonthAgoBtn;
-
     @FXML
     private RadioButton yearAgoBtn;
-
     @FXML
     private RadioButton allTimeAgoBtn;
-
-    protected String period = "weekAgo";
-
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {

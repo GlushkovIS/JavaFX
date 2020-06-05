@@ -1,6 +1,6 @@
 package sample.handler;
 
-import javafx.scene.chart.LineChart;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart;
 
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ public class Graph {
     /**
      * Построить график изменения веса
      */
-    public void buildWeightGraph(LineChart<?, ?> chart, String period, String login) throws SQLException, ClassNotFoundException {
+    public void buildWeightGraph(AreaChart<?, ?> chart, String period, String login) throws SQLException, ClassNotFoundException {
         chart.getData().clear();
         XYChart.Series series = new XYChart.Series<String, Double>();
 
@@ -26,12 +26,12 @@ public class Graph {
         resultSet.close();
         styleOfChart(chart);
 
-        chart.getData().addAll(series);
+        chart.getData().add(series);
     }
 
-    private void styleOfChart(LineChart<?, ?> chart){
-        chart.setCreateSymbols(false);
+    private void styleOfChart(AreaChart<?, ?> chart){
         chart.setLegendVisible(false);
+        chart.setAnimated(false);
     }
 
 }
