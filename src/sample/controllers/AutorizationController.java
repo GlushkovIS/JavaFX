@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.animations.Shake;
 import sample.handler.DatabaseHandler;
@@ -34,6 +35,11 @@ public class AutorizationController {
     private Button authButton;
     @FXML
     private Button singUpButton;
+    @FXML
+    private ImageView imageLogin;
+    @FXML
+    private ImageView imagePassword;
+
 
     @FXML
     void initialize() {
@@ -50,6 +56,10 @@ public class AutorizationController {
             } else {
                 Shake userLoginWrongAnim = new Shake(loginField);
                 Shake userPasswordWrongAnim = new Shake(passwordField);
+                Shake imageLogin = new Shake(this.imageLogin);
+                Shake imagePassword = new Shake(this.imagePassword);
+                imageLogin.PlayAnim();
+                imagePassword.PlayAnim();
                 userLoginWrongAnim.PlayAnim();
                 userPasswordWrongAnim.PlayAnim();
             }
@@ -62,6 +72,7 @@ public class AutorizationController {
             // открыть новое окно
             window.goToScene("SingUpWindow.fxml");
         });
+
     }
 
     /**

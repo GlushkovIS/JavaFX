@@ -33,12 +33,12 @@
                   <Font name="Helvetica" size="21.0" />
                </font>
             </Button>
-            <ImageView fitHeight="41.0" fitWidth="35.0" layoutX="451.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageLogin" fitHeight="41.0" fitWidth="35.0" layoutX="451.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/user.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="61.0" fitWidth="35.0" layoutX="451.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imagePassword" fitHeight="61.0" fitWidth="35.0" layoutX="451.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/password.png" />
                </image>

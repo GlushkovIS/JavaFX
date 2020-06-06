@@ -2,6 +2,7 @@ package sample.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.animations.Shake;
 import sample.handler.DatabaseHandler;
@@ -41,6 +42,16 @@ public class SingUpController {
     private RadioButton womenCheckBox;
     @FXML
     private RadioButton noCheckBox;
+    @FXML
+    private ImageView imagePassword;
+    @FXML
+    private ImageView imageLogin;
+    @FXML
+    private ImageView imageName;
+    @FXML
+    private ImageView imageSurname;
+    @FXML
+    private ImageView imageCountry;
 
     @FXML
     void initialize() {
@@ -88,6 +99,16 @@ public class SingUpController {
             Shake countryAnim = new Shake(singUpCountry);
             Shake loginAnim = new Shake(singUpLoginField);
             Shake passwordAnim = new Shake(singUpPasswordField);
+            Shake imageName = new Shake(this.imageName);
+            Shake imageSurname = new Shake(this.imageSurname);
+            Shake imageLogin = new Shake(this.imageLogin);
+            Shake imagePassword = new Shake(this.imagePassword);
+            Shake imageCountry = new Shake(this.imageCountry);
+            imageName.PlayAnim();
+            imageSurname.PlayAnim();
+            imageLogin.PlayAnim();
+            imagePassword.PlayAnim();
+            imageCountry.PlayAnim();
             nameAnim.PlayAnim();
             surnameAnim.PlayAnim();
             countryAnim.PlayAnim();

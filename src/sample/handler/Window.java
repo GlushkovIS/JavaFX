@@ -25,6 +25,8 @@ public class Window {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Loose Weight 1.1");
         stage.show();
     }
 }

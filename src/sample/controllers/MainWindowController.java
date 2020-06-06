@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.animations.Shake;
@@ -58,6 +59,8 @@ public class MainWindowController {
     private RadioButton yearAgoBtn;
     @FXML
     private RadioButton allTimeAgoBtn;
+    @FXML
+    private ImageView imageWeight;
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
@@ -194,6 +197,8 @@ public class MainWindowController {
             databaseHandler.insertWeight(getUserLogin(), inputData.stringWeightProcessing(weight));
         } else {
             Shake weightAnim = new Shake(weightInput);
+            Shake imageAnim = new Shake(this.imageWeight);
+            imageAnim.PlayAnim();
             weightAnim.PlayAnim();
         }
 
