@@ -28,12 +28,12 @@
                       <Font name="Helvetica" size="15.0" />
                   </font>
               </Button>
-            <ImageView fitHeight="41.0" fitWidth="35.0" layoutX="1319.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageWeight" fitHeight="41.0" fitWidth="35.0" layoutX="1319.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/weight.png" />
                </image>
             </ImageView>
-            <Button fx:id="chengeDataButton" layoutX="1166.0" layoutY="215.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #876294;" text="Изменить данные" textFill="WHITE">
+            <Button fx:id="changeDataButton" layoutX="1166.0" layoutY="215.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #876294;" text="Изменить данные" textFill="WHITE">
                <font>
                   <Font name="Helvetica" size="15.0" />
                </font>

@@ -85,20 +85,33 @@ public class AutorizationController {
 
         ResultSet resultSet = databaseHandler.getUser(user);
 
-        // записывает имя клиента в объект (для привествия в основном окне)
-        user.setName(resultSet.getString("name"));
-
         int counter = 0;
         while (resultSet.next()) {
             counter++;
         }
 
         if (counter == 1) {
+
+            ResultSet result = databaseHandler.getUser(user);
+            // записывает имя клиента в объект (для привествия в основном окне)
+            user.setName(result.getString("name"));
+            result.close();
+
             // закрыть текущее окно
             Stage currentStage = (Stage) singUpButton.getScene().getWindow();
             currentStage.close();
             // открыть новое окно
             window.goToScene("MainWindow.fxml");
+
+        } else {
+            Shake userLoginWrongAnim = new Shake(loginField);
+            Shake userPasswordWrongAnim = new Shake(passwordField);
+            Shake imageLogin = new Shake(this.imageLogin);
+            Shake imagePassword = new Shake(this.imagePassword);
+            imageLogin.PlayAnim();
+            imagePassword.PlayAnim();
+            userLoginWrongAnim.PlayAnim();
+            userPasswordWrongAnim.PlayAnim();
         }
     }
 

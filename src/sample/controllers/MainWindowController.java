@@ -32,6 +32,8 @@ public class MainWindowController {
     @FXML
     private URL location;
     @FXML
+    private Button changeDataButton;
+    @FXML
     private TextField weightInput;
     @FXML
     private Button sendWeigthButton;
@@ -86,6 +88,9 @@ public class MainWindowController {
             } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
             }
+        });
+        changeDataButton.setOnAction(actionEvent -> {
+            window.goToSceneModal("ChangeWeightWindow.fxml");
         });
 
         graph.buildWeightGraph(chart, this.period, getUserLogin());
@@ -158,6 +163,7 @@ public class MainWindowController {
                 e.printStackTrace();
             }
         });
+
 
     }
 

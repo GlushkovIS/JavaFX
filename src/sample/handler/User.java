@@ -2,7 +2,7 @@ package sample.handler;
 
 public class User {
 
-    private String name;
+    private static String name;
     private String surname;
     private String sex;
     private String country;
@@ -13,7 +13,7 @@ public class User {
     }
 
     public User(String name, String surname, String sex, String country, String login, String password) {
-        this.name = name;
+        User.name = name;
         this.surname = surname;
         this.sex = sex;
         this.country = country;
@@ -26,7 +26,7 @@ public class User {
     }
 
     public void setName(String name) {
-        this.name = name;
+        User.name = name;
     }
 
     public String getSurname() {
