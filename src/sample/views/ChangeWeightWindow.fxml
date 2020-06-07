@@ -11,17 +11,7 @@
     <children>
         <AnchorPane layoutY="110.0" prefHeight="700.0" prefWidth="767.0" style="-fx-background-color: #fafafa;">
             <children>
-              <Button fx:id="saveButton" layoutX="585.0" layoutY="551.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #876294;" text="Сохранить" textFill="WHITE">
-                  <font>
-                      <Font name="Helvetica" size="15.0" />
-                  </font>
-              </Button>
-            <Button fx:id="backButton" layoutX="585.0" layoutY="615.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #876294;" text="Назад" textFill="WHITE">
-               <font>
-                  <Font name="Helvetica" size="15.0" />
-               </font>
-            </Button>
-            <TableView fx:id="tableWeight" editable="true" layoutX="27.0" layoutY="15.0" prefHeight="641.0" prefWidth="535.0">
+            <TableView fx:id="tableWeight" editable="true" layoutX="27.0" layoutY="15.0" prefHeight="668.0" prefWidth="723.0">
               <columns>
                 <TableColumn fx:id="dateCol" prefWidth="267.0" text="Дата записи" />
                 <TableColumn fx:id="weightCol" prefWidth="267.0" text="Указанный вес, кг" />
@@ -37,5 +27,10 @@
                 <Font name="Helvetica" size="34.0" />
             </font>
         </Label>
+      <Button fx:id="backButton" layoutX="594.0" layoutY="39.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #876294;" text="Назад" textFill="WHITE">
+         <font>
+            <Font name="Helvetica" size="15.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

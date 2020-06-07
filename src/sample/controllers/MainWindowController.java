@@ -184,7 +184,7 @@ public class MainWindowController {
      *
      * @return user.login
      */
-    private String getUserLogin() {
+    public static String getUserLogin() {
         if (AutorizationController.user.getLogin() == null) {
             return SingUpController.user.getLogin();
         }

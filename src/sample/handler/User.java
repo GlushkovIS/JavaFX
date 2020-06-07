@@ -2,7 +2,7 @@ package sample.handler;
 
 public class User {
 
-    private static String name;
+    public static String name;
     private String surname;
     private String sex;
     private String country;

@@ -122,4 +122,19 @@ public class DatabaseHandler extends Config {
         return preparedStatement.executeQuery();
     }
 
+    /**
+     * Обновляет вес в БД
+     */
+    public void updateWeight(TableData tableData, String weight, String login) throws SQLException, ClassNotFoundException {
+        String update = "UPDATE " + Const.WEIGHT_TABLE + " SET " + Const.WEIGHT_WEIGHT + "=?" + " WHERE " + Const.DATE_WEIGHT + "=? AND " + Const.WEIGHT_WEIGHT + "=? AND " + Const.LOGIN_WEIGHT + "=?";
+
+        PreparedStatement preparedStatement = getDbConnection().prepareStatement(update);
+        preparedStatement.setString(1, weight);
+        preparedStatement.setString(2, tableData.getDate());
+        preparedStatement.setString(3, tableData.getWeight());
+        preparedStatement.setString(4, login);
+
+        preparedStatement.executeUpdate();
+    }
+
 }
