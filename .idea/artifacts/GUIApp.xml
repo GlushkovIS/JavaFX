@@ -1,0 +1,30 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="GUIApp">
+    <output-path>$PROJECT_DIR$/out/artifacts/GUIApp</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="looseweight.Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="icons">
+          <JavaFxApplicationIcons>
+            <option name="linuxIcon" value="$PROJECT_DIR$/src/looseweight/assets/looseweight.icns" />
+            <option name="macIcon" value="$PROJECT_DIR$/src/looseweight/assets/looseweight.icns" />
+            <option name="windowsIcon" value="$PROJECT_DIR$/src/looseweight/assets/looseweight.icns" />
+          </JavaFxApplicationIcons>
+        </option>
+        <option name="nativeBundle" value="dmg" />
+        <option name="title" value="Loose Weight" />
+        <option name="vendor" value="GlushkovIS" />
+        <option name="version" value="1.1" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="GUIApp.jar">
+        <element id="module-output" name="GUIApp" />
+        <element id="library" level="project" name="sqlite-jdbc-3.27.2.1" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/main.db3" />
+      </element>
+    </root>
+  </artifact>
+</component>
